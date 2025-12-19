@@ -2,9 +2,592 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Camy</title>
-</head>
-<body>
-    <h1>I'm Camy</h1>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camy's Personal Website</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #000;
+            background-color: #fff;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            background-image: url("static/6208662865082783657.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 60px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-picture {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid #7EC8FF;
+            cursor: pointer;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 4px 15px rgba(126, 200, 255, 0.4);
+        }
+
+        .header-wrapper {
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .header-wrapper:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .name {
+            font-size: 36px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        nav {
+            font-size: 18px;
+        }
+
+        nav a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 5px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a.active {
+            color: #7EC8FF;
+            background: rgba(126, 200, 255, 0.1);
+        }
+
+        nav a:hover {
+            color: #7EC8FF;
+            background: rgba(126, 200, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        main {
+            margin-top: 40px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        h1:hover {
+            transform: translateX(5px);
+        }
+
+        .heading-icon {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .heading-icon:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section:hover {
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .section-with-image {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        .section-content {
+            flex: 0 1 auto;
+        }
+
+        .section-image {
+            flex-shrink: 0;
+            margin-left: 15px;
+        }
+
+        .section-image.skills-image {
+            margin-left: 25px;
+            margin-top: 20px;
+        }
+
+        .section-image img {
+            display: block;
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-separator {
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+            margin: 30px 0;
+            width: 100%;
+        }
+
+        .header-separator {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .section-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .section-title a:hover {
+            color: #7EC8FF;
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 16px;
+            transition: transform 0.2s ease, padding-left 0.2s ease;
+        }
+
+        ul li:hover {
+            transform: translateX(5px);
+            padding-left: 25px;
+        }
+
+        ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #7EC8FF;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        ul li:hover:before {
+            transform: scale(1.5);
+        }
+
+        .highlight {
+            color:#7EC8FF;
+            font-weight: bold;
+        }
+
+        .content-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .content-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-form {
+            max-width: 600px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+            font-size: 16px;
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: linear-gradient(135deg, #7EC8FF 0%, #5BA3E8 100%);
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: inherit;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(126, 200, 255, 0.3);
+            font-weight: 600;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(126, 200, 255, 0.4);
+            background: linear-gradient(135deg, #5BA3E8 0%, #7EC8FF 100%);
+        }
+
+        .contact-info {
+            margin-top: 30px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .contact-info a {
+            color: #7EC8FF;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .contact-info a:hover {
+            background: rgba(126, 200, 255, 0.15);
+            transform: translateX(5px);
+            text-decoration: underline;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #7EC8FF 0%, #5BA3E8 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(126, 200, 255, 0.3);
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 10px rgba(126, 200, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 30px;
+            }
+
+            .profile-picture {
+                width: 50px;
+                height: 50px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .name {
+                font-size: 28px;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="header-wrapper">
+            <header>
+                <div class="header-left">
+                    <img src="static/img.png" alt="Camy" class="profile-picture">
+                    <div class="name">Camy</div>
+                </div>
+                <nav>
+                    <a href="#" class="nav-link active" data-section="About">About</a> | 
+                    <a href="#" class="nav-link" data-section="Projects">Projects</a> | 
+                    <a href="#" class="nav-link" data-section="Contact">Contact</a>
+                </nav>
+            </header>
+
+        </div>
+
+        <div class="section-separator header-separator"></div>
+
+        <main>
+            <!-- About Section -->
+            <div id="About" class="content-section active">
+                <h1>About<img src="static/6208662865082783028.jpg" alt="Pochacco" class="heading-icon"></h1>
+                <p>Hello! I'm Camy, a Business AI Systems student at the National University of Singapore. 😊 </p>
+
+                <div class="section-separator"></div>
+
+                <div class="section section-with-image">
+                    <div class="section-content">
+                        <div class="section-title">I'm interested in:</div>
+                        <ul>
+                            <li>Building software and figuring out how systems work 👩‍💻</li>
+                            <li>Frontend engineering and making things feel smooth and responsive</li>
+                            <li>UI/UX design — I like thinking about how real users interact with what I build</li>
+                            <li>Product management, from shaping ideas to shipping useful features</li>
+                            <li>Learning by building projects and improving them over time 🤓</li>
+                        </ul>
+                    </div>
+                    <div class="section-image">
+                        <img src="https://media.tenor.com/iCqG_iT-h48AAAAM/bills-ugh.gif" alt="cat typing" style="max-width: 170px; height: auto;">
+                    </div>
+                </div>
+
+                <div class="section-separator"></div>
+
+                <div class="section section-with-image">
+                    <div class="section-content">
+                        <div class="section-title"><a href="#" class="nav-link" data-section="Projects">My projects:</a></div>
+                        <ul>
+                            <li>Snake game</li>
+                            <li>Name card website</li>
+                        </ul>
+                    </div>
+                    <div class="section-image">
+                        <img src="https://media.tenor.com/tBZfQqRF1VAAAAAM/homework-thinking.gif" alt="Thinking" style="max-width: 170px; height: auto;">
+                    </div>
+                </div>
+            
+                <div class="section-separator"></div>
+
+                <div class="section section-with-image">
+                    <div class="section-content">
+                        <div class="section-title">My skills:</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Pandas</span>
+                        </div>
+                    </div>
+                    <div class="section-image skills-image">
+                        <img src="static/6208662865082783662.jpg" alt="Skills illustration" style="max-width: 150px; height: auto;">
+                    </div>
+                </div>
+
+
+                <div class="section-separator"></div>
+
+                <div class="section">
+                    <div class="section-title">In NUS, I'm a:</div>
+                    <ul>
+                        <li><span class="highlight">Publicity Head</span> of CAPT's CE Day 2026</li>
+                    </ul>
+                </div>
+                <div class="section-separator"></div>
+
+                <div class="section section-with-image">
+                    <div class="section-content">
+                        <div class="section-title">I like:</div>
+                        <ul>
+                            <li>Blue 🫐</li>
+                            <li>Cute things 🧸</li>
+                            <li>Christmas 🎄</li>
+                        </ul>
+                    </div>
+                    <div class="section-image">
+                        <img src="static/6208662865082783665.jpg" alt="Christmas wreath" style="max-width: 150px; height: auto;">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Projects Section -->
+            <div id="Projects" class="content-section">
+                <h1>Projects</h1>
+
+                <p>Here are some of my projects! 😋</p>
+
+                <div class="section">
+                    <div class="section-title"></div>
+                    <p></p>
+                </div>
+            
+            </div>
+
+            <!-- Contact Section -->
+            <div id="Contact" class="content-section">
+                <h1>Contact</h1>
+
+                <p>Feel free to reach out if you'd like to connect, collaborate, or just talk! 😆</p>
+
+                <div class="contact-info">
+                    <p><strong>Email:</strong> xtwhcj316@gmail.com</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/camy-jill-chew" target="_blank">linkedin.com/in/camy-jill-chew</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/camyjc" target="_blank">github.com/camyjc</a></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and sections
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+                
+                // Get the section ID
+                const sectionId = this.getAttribute('data-section');
+                
+                // Find the corresponding nav link in the header and make it active
+                const headerNavLink = document.querySelector(`nav .nav-link[data-section="${sectionId}"]`);
+                if (headerNavLink) {
+                    headerNavLink.classList.add('active');
+                } else {
+                    // If not found in header, make the clicked link active (for inline links)
+                    this.classList.add('active');
+                }
+                
+                // Show corresponding section
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
