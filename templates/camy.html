@@ -407,7 +407,12 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 30px 30px;
+                padding: 20px 20px;
+            }
+
+            .header-wrapper {
+                padding: 15px 20px;
+                margin-bottom: 20px;
             }
 
             .profile-picture {
@@ -418,11 +423,146 @@
             header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 20px;
+                gap: 15px;
             }
 
             .name {
-                font-size: 28px;
+                font-size: 24px;
+            }
+
+            nav {
+                font-size: 16px;
+                width: 100%;
+            }
+
+            nav a {
+                margin: 0 3px;
+                padding: 5px 8px;
+                display: inline-block;
+            }
+
+            h1 {
+                font-size: 24px;
+                flex-wrap: wrap;
+            }
+
+            .heading-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+
+            .section-with-image {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-content {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .section-image {
+                margin-left: 0;
+                margin-top: 15px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .section-image.skills-image {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+
+            .section-image img {
+                max-width: 100%;
+                width: auto;
+                height: auto;
+            }
+
+            ul li {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .skill-tags {
+                gap: 6px;
+            }
+
+            .skill-tag {
+                font-size: 12px;
+                padding: 5px 12px;
+            }
+
+            main {
+                margin-top: 20px;
+            }
+
+            .contact-info p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px 15px;
+            }
+
+            .header-wrapper {
+                padding: 12px 15px;
+            }
+
+            .name {
+                font-size: 20px;
+            }
+
+            nav {
+                font-size: 14px;
+            }
+
+            nav a {
+                padding: 4px 6px;
+                margin: 0 2px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .heading-icon {
+                width: 35px;
+                height: 35px;
+            }
+
+            .section {
+                padding: 12px;
+            }
+
+            .section-title {
+                font-size: 15px;
+            }
+
+            ul li {
+                font-size: 14px;
+            }
+
+            .skill-tag {
+                font-size: 11px;
+                padding: 4px 10px;
             }
         }
     </style>
@@ -433,7 +573,7 @@
             <header>
                 <div class="header-left">
                     <img src="{{ url_for('static', filename='img.png') }}" alt="Camy" class="profile-picture">
-                    <div class="name">Camy</div>
+                    <div class="name">Camy Jill</div>
                 </div>
                 <nav>
                     <a href="#" class="nav-link active" data-section="About">About</a> | 
@@ -460,7 +600,7 @@
                         <ul>
                             <li>Building software and figuring out how systems work 👩‍💻</li>
                             <li>Frontend engineering and making things feel smooth and responsive</li>
-                            <li>UI/UX design — I like thinking about how real users interact with what I build</li>
+                            <li>Focusing on usability and how users experience the products I build</li>
                             <li>Product management, from shaping ideas to shipping useful features</li>
                             <li>Learning by building projects and improving them over time 🤓</li>
                         </ul>
